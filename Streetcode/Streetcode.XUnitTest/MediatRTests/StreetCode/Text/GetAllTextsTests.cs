@@ -100,7 +100,7 @@ public class GetAllTextsTests
         // Assert
         _mockMapper.Verify(
             mapper =>
-            mapper.Map<IEnumerable<TextDTO>>(It.IsAny<IEnumerable<Streetcode.DAL.Entities.Streetcode.TextContent.Text>>()), Times.Once);
+            mapper.Map<IEnumerable<TextDTO>>(It.IsAny<Text>>()), Times.Once);
     }
 
     [Fact]
