@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore.Query;
 using Moq;
-using Streetcode.BLL.DTO.Media.Audio;
+using Streetcode.BLL.Dto.Media.Audio;
 using Streetcode.BLL.Interfaces.BlobStorage;
 using Streetcode.BLL.Interfaces.Logging;
 using Streetcode.BLL.MediatR.Media.Audio.GetById;
@@ -69,9 +69,9 @@ public class GetAudioByIdHandlerTests
         _mockRepositoryWrapper.Verify(
             repo =>
             repo.AudioRepository.GetFirstOrDefaultAsync(
-               It.IsAny<Expression<Func<Audio, bool>>>(),
-               It.IsAny<Func<IQueryable<Audio>,
-               IIncludableQueryable<Audio, object>>>()),
+               It.IsAny<Expression<Func<Streetcode.DAL.Entities.Media.Audio, bool>>>(),
+               It.IsAny<Func<IQueryable<Streetcode.DAL.Entities.Media.Audio>,
+               IIncludableQueryable<Streetcode.DAL.Entities.Media.Audio, object>>>()),
             Times.Once);
     }
 
@@ -94,7 +94,7 @@ public class GetAudioByIdHandlerTests
 
         // Assert
         _mockMapper.Verify(
-            mapper => mapper.Map<AudioDTO>(It.IsAny<Audio>()),
+            mapper => mapper.Map<AudioDto>(It.IsAny<Audio>()),
             Times.Once);
     }
 
@@ -137,7 +137,7 @@ public class GetAudioByIdHandlerTests
         var result = await handler.Handle(new GetAudioByIdQuery(id), CancellationToken.None);
 
         // Assert
-        Assert.IsType<AudioDTO>(result.Value);
+        Assert.IsType<AudioDto>(result.Value);
     }
 
     [Theory]
@@ -186,8 +186,8 @@ public class GetAudioByIdHandlerTests
     private void MockMapperSetup(int id)
     {
         _mockMapper.Setup(x => x
-            .Map<AudioDTO>(It.IsAny<Audio>()))
-            .Returns(new AudioDTO { Id = id });
+            .Map<AudioDto>(It.IsAny<Streetcode.DAL.Entities.Media.Audio>()))
+            .Returns(new AudioDto { Id = id });
     }
 
     private void MockRepositorySetupReturnsAudio(int id)

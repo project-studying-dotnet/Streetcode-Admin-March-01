@@ -1,202 +1,206 @@
-﻿namespace Streetcode.XUnitTest.MediatRTests.Media.Art;
-
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore.Query;
 using Moq;
-using Streetcode.BLL.DTO.Media.Art;
+using Streetcode.BLL.Dto.Media.Art;
+using Streetcode.BLL.Dto.Media.Images;
 using Streetcode.BLL.Interfaces.Logging;
+using Streetcode.BLL.MediatR.Media.Art.GetAll;
 using Streetcode.BLL.MediatR.Media.Art.GetById;
 using Streetcode.DAL.Entities.Media.Images;
+using Streetcode.DAL.Entities.Streetcode;
 using Streetcode.DAL.Repositories.Interfaces.Base;
 using Xunit;
 
-public class GetArtByIdTest
+namespace Streetcode.XUnitTest.MediatRTests.Media.Art
 {
-    private readonly Mock<ILoggerService> _mockLogger;
-    private readonly Mock<IRepositoryWrapper> _mockRepositoryWrapper;
-    private readonly Mock<IMapper> _mockMapper;
-
-    public GetArtByIdTest()
+    public class GetArtByIdTest
     {
-        _mockRepositoryWrapper = new Mock<IRepositoryWrapper>();
-        _mockMapper = new Mock<IMapper>();
-        _mockLogger = new Mock<ILoggerService>();
-    }
+        private readonly Mock<ILoggerService> _mockLogger;
+        private readonly Mock<IRepositoryWrapper> _mockRepositoryWrapper;
+        private readonly Mock<IMapper> _mockMapper;
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_ReturnsOkResult_WhenIdExists(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsArt(id);
-        MockMapperSetup(id);
+        public GetArtByIdTest()
+        {
+            _mockRepositoryWrapper = new Mock<IRepositoryWrapper>();
+            _mockMapper = new Mock<IMapper>();
+            _mockLogger = new Mock<ILoggerService>();
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_ReturnsOkResult_WhenIdExists(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsArt(id);
+            MockMapperSetup(id);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        Assert.True(result.IsSuccess);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_RepositoryCallGetFirstOrDefaultAsyncOnlyOnce_WhenArtExists(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsArt(id);
-        MockMapperSetup(id);
+            // Assert
+            Assert.True(result.IsSuccess);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_RepositoryCallGetFirstOrDefaultAsyncOnlyOnce_WhenArtExists(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsArt(id);
+            MockMapperSetup(id);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        _mockRepositoryWrapper.Verify(
-            repo =>
-            repo.ArtRepository.GetFirstOrDefaultAsync(
-               It.IsAny<Expression<Func<Art, bool>>>(),
-               It.IsAny<Func<IQueryable<Art>,
-               IIncludableQueryable<Art, object>>>()),
-            Times.Once);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_MapperCallMapOnlyOnce_WhenArtExists(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsArt(id);
-        MockMapperSetup(id);
+            // Assert
+            _mockRepositoryWrapper.Verify(
+                repo =>
+                repo.ArtRepository.GetFirstOrDefaultAsync(
+                   It.IsAny<Expression<Func<Streetcode.DAL.Entities.Media.Images.Art, bool>>>(),
+                   It.IsAny<Func<IQueryable<Streetcode.DAL.Entities.Media.Images.Art>,
+                   IIncludableQueryable<Streetcode.DAL.Entities.Media.Images.Art, object>>>()),
+                Times.Once);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_MapperCallMapOnlyOnce_WhenArtExists(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsArt(id);
+            MockMapperSetup(id);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        _mockMapper.Verify(
-            mapper => mapper.Map<ArtDTO>(It.IsAny<Art>()),
-            Times.Once);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_ReturnsArtWithCorrectId_WhenArtExists(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsArt(id);
-        MockMapperSetup(id);
+            // Assert
+            _mockMapper.Verify(
+                mapper => mapper.Map<ArtDto>(It.IsAny<Streetcode.DAL.Entities.Media.Images.Art>()),
+                Times.Once);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_ReturnsArtWithCorrectId_WhenArtExists(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsArt(id);
+            MockMapperSetup(id);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        Assert.Equal(id, result.Value.Id);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_ReturnArtDto_WhenArtExists(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsArt(id);
-        MockMapperSetup(id);
+            // Assert
+            Assert.Equal(id, result.Value.Id);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_ReturnArtDto_WhenArtExists(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsArt(id);
+            MockMapperSetup(id);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        Assert.IsType<ArtDTO>(result.Value);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_ReturnFail_WhenArtIsNotFound(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsNull();
+            // Assert
+            Assert.IsType<ArtDto>(result.Value);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_ReturnFail_WhenArtIsNotFound(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsNull();
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Assert
-        Assert.True(result.IsFailed);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
 
-    [Theory]
-    [InlineData(1)]
-    public async Task Handle_ShouldLogCorrectErrorMessage_WhenArtIsNotFound(int id)
-    {
-        // Arrange
-        MockRepositorySetupReturnsNull();
+            // Assert
+            Assert.True(result.IsFailed);
+        }
 
-        var handler = new GetArtByIdHandler(
-            _mockRepositoryWrapper.Object,
-            _mockMapper.Object,
-            _mockLogger.Object);
+        [Theory]
+        [InlineData(1)]
+        public async Task Handle_ShouldLogCorrectErrorMessage_WhenArtIsNotFound(int id)
+        {
+            // Arrange
+            MockRepositorySetupReturnsNull();
 
-        var expectedMessage = $"Cannot find an art with corresponding id: {id}";
+            var handler = new GetArtByIdHandler(
+                _mockRepositoryWrapper.Object,
+                _mockMapper.Object,
+                _mockLogger.Object);
 
-        // Act
-        var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
-        var actualMessage = result.Errors.First().Message;
+            var expectedMessage = $"Cannot find an art with corresponding id: {id}";
 
-        // Assert
-        Assert.Equal(expectedMessage, actualMessage);
-    }
+            // Act
+            var result = await handler.Handle(new GetArtByIdQuery(id), CancellationToken.None);
+            var actualMessage = result.Errors.First().Message;
 
-    private void MockMapperSetup(int id)
-    {
-        _mockMapper.Setup(x => x
-            .Map<ArtDTO>(It.IsAny<Art>()))
-            .Returns(new ArtDTO { Id = id });
-    }
+            // Assert
+            Assert.Equal(expectedMessage, actualMessage);
+        }
 
-    private void MockRepositorySetupReturnsArt(int id)
-    {
-        _mockRepositoryWrapper.Setup(x => x.ArtRepository
-            .GetFirstOrDefaultAsync(
-               It.IsAny<Expression<Func<Art, bool>>>(),
-               It.IsAny<Func<IQueryable<Art>,
-               IIncludableQueryable<Art, object>>>()))
-            .ReturnsAsync(new Art { Id = id });
-    }
+        private void MockMapperSetup(int id)
+        {
+            _mockMapper.Setup(x => x
+                .Map<ArtDto>(It.IsAny<Streetcode.DAL.Entities.Media.Images.Art>()))
+                .Returns(new ArtDto { Id = id });
+        }
 
-    private void MockRepositorySetupReturnsNull()
-    {
-        _mockRepositoryWrapper.Setup(x => x.ArtRepository
-            .GetAllAsync(
-                It.IsAny<Expression<Func<Art, bool>>>(),
-                It.IsAny<Func<IQueryable<Art>,
-            IIncludableQueryable<Art, object>>>()))
-            .ReturnsAsync((IEnumerable<Art>?)null);
+        private void MockRepositorySetupReturnsArt(int id)
+        {
+            _mockRepositoryWrapper.Setup(x => x.ArtRepository
+                .GetFirstOrDefaultAsync(
+                   It.IsAny<Expression<Func<Streetcode.DAL.Entities.Media.Images.Art, bool>>>(),
+                   It.IsAny<Func<IQueryable<Streetcode.DAL.Entities.Media.Images.Art>,
+                   IIncludableQueryable<Streetcode.DAL.Entities.Media.Images.Art, object>>>()))
+                .ReturnsAsync(new Streetcode.DAL.Entities.Media.Images.Art { Id = id });
+        }
+
+        private void MockRepositorySetupReturnsNull()
+        {
+            _mockRepositoryWrapper.Setup(x => x.ArtRepository
+                .GetAllAsync(
+                    It.IsAny<Expression<Func<Streetcode.DAL.Entities.Media.Images.Art, bool>>>(),
+                    It.IsAny<Func<IQueryable<Streetcode.DAL.Entities.Media.Images.Art>,
+                IIncludableQueryable<Streetcode.DAL.Entities.Media.Images.Art, object>>>()))
+                .ReturnsAsync((IEnumerable<Streetcode.DAL.Entities.Media.Images.Art>?)null);
+        }
     }
 }
