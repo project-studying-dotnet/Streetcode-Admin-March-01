@@ -30,7 +30,7 @@ public class GetArtByIdHandler : IRequestHandler<GetArtByIdQuery, Result<ArtDto>
 
         if (art is null)
         {
-            string errorMsg = string.Format(ErrorMessages.ResourceManager.GetString("ArtByIdNotFound") !, request.Id);
+            string errorMsg = string.Format(ErrorMessages.ArtByIdNotFound, request.Id);
             _logger.LogError(request, errorMsg);
             return Result.Fail(new Error(errorMsg));
         }
