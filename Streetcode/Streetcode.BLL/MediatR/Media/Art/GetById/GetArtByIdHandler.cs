@@ -6,6 +6,8 @@ using Streetcode.BLL.Dto.Media.Images;
 using Streetcode.BLL.Interfaces.Logging;
 using Streetcode.BLL.Dto.Media.Art;
 using Streetcode.DAL.Repositories.Interfaces.Base;
+using Microsoft.AspNetCore.Http;
+using Streetcode.BLL.Resources.ErrorMessages;
 
 namespace Streetcode.BLL.MediatR.Media.Art.GetById;
 
@@ -28,7 +30,7 @@ public class GetArtByIdHandler : IRequestHandler<GetArtByIdQuery, Result<ArtDto>
 
         if (art is null)
         {
-            string errorMsg = $"Cannot find an art with corresponding id: {request.Id}";
+            string errorMsg = string.Format(ErrorMessages.ResourceManager.GetString("ArtByIdNotFound") !, request.Id);
             _logger.LogError(request, errorMsg);
             return Result.Fail(new Error(errorMsg));
         }
