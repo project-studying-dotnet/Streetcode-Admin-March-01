@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Streetcode.BLL.Resources.ErrorMessages {
+namespace Streetcode.BLL.Resources.Errors.ValidationErrors.Fact {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Streetcode.BLL.Resources.ErrorMessages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ErrorMessages {
+    internal class CreateFactErrors {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorMessages() {
+        internal CreateFactErrors() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Streetcode.BLL.Resources.ErrorMessages.ErrorMessages", typeof(ErrorMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Streetcode.BLL.Resources.Errors.ValidationErrors.Fact.CreateFactErrors", typeof(CreateFactErrors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,57 +51,12 @@ namespace Streetcode.BLL.Resources.ErrorMessages {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to create the {0} with id: {1}.
-        /// </summary>
-        public static string CreateFailed {
-            get {
-                return ResourceManager.GetString("CreateFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to delete the {0} with id: {1}.
-        /// </summary>
-        public static string DeleteFailed {
-            get {
-                return ResourceManager.GetString("DeleteFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any {0}s.
-        /// </summary>
-        public static string EntitiesNotFound {
-            get {
-                return ResourceManager.GetString("EntitiesNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find {0} with id: {1}.
-        /// </summary>
-        public static string EntityByIdNotFound {
-            get {
-                return ResourceManager.GetString("EntityByIdNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to update the {0} with id: {1}.
-        /// </summary>
-        public static string UpdateFailed {
-            get {
-                return ResourceManager.GetString("UpdateFailed", resourceCulture);
             }
         }
     }
