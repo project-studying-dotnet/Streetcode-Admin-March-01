@@ -29,7 +29,7 @@ public class GetAllArtsHandler : IRequestHandler<GetAllArtsQuery, Result<IEnumer
 
         if (arts is null)
         {
-            string errorMsg = ErrorMessages.ArtsNotFound;
+            string errorMsg = string.Format(ErrorMessages.EntitiesNotFound, nameof(Art));
             _logger.LogError(request, errorMsg);
             return Result.Fail(new Error(errorMsg));
         }
