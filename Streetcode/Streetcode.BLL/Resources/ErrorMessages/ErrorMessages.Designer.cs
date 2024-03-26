@@ -61,182 +61,47 @@ namespace Streetcode.BLL.Resources.ErrorMessages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find an art with corresponding id: {0}.
+        ///   Looks up a localized string similar to Failed to create the {0} with id: {1}.
         /// </summary>
-        internal static string ArtByIdNotFound {
+        internal static string CreateFailed {
             get {
-                return ResourceManager.GetString("ArtByIdNotFound", resourceCulture);
+                return ResourceManager.GetString("CreateFailed", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find any arts.
+        ///   Looks up a localized string similar to Failed to delete the {0} with id: {1}.
         /// </summary>
-        internal static string ArtsNotFound {
+        internal static string DeleteFailed {
             get {
-                return ResourceManager.GetString("ArtsNotFound", resourceCulture);
+                return ResourceManager.GetString("DeleteFailed", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find any audios.
+        ///   Looks up a localized string similar to Cannot find any {0}s.
         /// </summary>
-        internal static string AudiosNotFound {
+        internal static string EntitiesNotFound {
             get {
-                return ResourceManager.GetString("AudiosNotFound", resourceCulture);
+                return ResourceManager.GetString("EntitiesNotFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find any categories.
+        ///   Looks up a localized string similar to Cannot find {0} with id: {1}.
         /// </summary>
-        internal static string CategoriesNotFound {
+        internal static string EntityByIdNotFound {
             get {
-                return ResourceManager.GetString("CategoriesNotFound", resourceCulture);
+                return ResourceManager.GetString("EntityByIdNotFound", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find any fact.
+        ///   Looks up a localized string similar to Failed to update the {0} with id: {1}.
         /// </summary>
-        internal static string FactsNotFound {
+        internal static string UpdateFailed {
             get {
-                return ResourceManager.GetString("FactsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any historical contexts.
-        /// </summary>
-        internal static string HistoricalContextsNotFound {
-            get {
-                return ResourceManager.GetString("HistoricalContextsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any images.
-        /// </summary>
-        internal static string ImagesNotFound {
-            get {
-                return ResourceManager.GetString("ImagesNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There are no news in the database.
-        /// </summary>
-        internal static string NewsNotFound {
-            get {
-                return ResourceManager.GetString("NewsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any partners.
-        /// </summary>
-        internal static string PartnersNotFound {
-            get {
-                return ResourceManager.GetString("PartnersNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any related terms.
-        /// </summary>
-        internal static string RelatedTermsNotFound {
-            get {
-                return ResourceManager.GetString("RelatedTermsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No streetcodes exist now.
-        /// </summary>
-        internal static string StreetcodesNotFound {
-            get {
-                return ResourceManager.GetString("StreetcodesNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any subtitles.
-        /// </summary>
-        internal static string SubtitlesNotFound {
-            get {
-                return ResourceManager.GetString("SubtitlesNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any tags.
-        /// </summary>
-        internal static string TagsNotFound {
-            get {
-                return ResourceManager.GetString("TagsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any team links.
-        /// </summary>
-        internal static string TeamLinksNotFound {
-            get {
-                return ResourceManager.GetString("TeamLinksNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any team.
-        /// </summary>
-        internal static string TeamsNotFound {
-            get {
-                return ResourceManager.GetString("TeamsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any terms.
-        /// </summary>
-        internal static string TermsNotFound {
-            get {
-                return ResourceManager.GetString("TermsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any texts.
-        /// </summary>
-        internal static string TestsNotFound {
-            get {
-                return ResourceManager.GetString("TestsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any timelineItem.
-        /// </summary>
-        internal static string TimelineItemsNotFound {
-            get {
-                return ResourceManager.GetString("TimelineItemsNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any transaction link.
-        /// </summary>
-        internal static string TransactionLinksNotFound {
-            get {
-                return ResourceManager.GetString("TransactionLinksNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find any videos.
-        /// </summary>
-        internal static string VideosNotFound {
-            get {
-                return ResourceManager.GetString("VideosNotFound", resourceCulture);
+                return ResourceManager.GetString("UpdateFailed", resourceCulture);
             }
         }
     }

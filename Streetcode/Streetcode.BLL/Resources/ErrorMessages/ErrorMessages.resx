@@ -117,65 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArtByIdNotFound" xml:space="preserve">
-    <value>Cannot find an art with corresponding id: {0}</value>
-    <comment>format argument 0 - art id</comment>
+  <data name="CreateFailed" xml:space="preserve">
+    <value>Failed to create the {0} with id: {1}</value>
+    <comment>format argument 0 - nameof(EntityClass), 1 - request id</comment>
   </data>
-  <data name="ArtsNotFound" xml:space="preserve">
-    <value>Cannot find any arts</value>
+  <data name="DeleteFailed" xml:space="preserve">
+    <value>Failed to delete the {0} with id: {1}</value>
+    <comment>format argument 0 - nameof(EntityClass), 1 - request id</comment>
   </data>
-  <data name="AudiosNotFound" xml:space="preserve">
-    <value>Cannot find any audios</value>
+  <data name="EntitiesNotFound" xml:space="preserve">
+    <value>Cannot find any {0}s</value>
+    <comment>format argument 0 - nameof(EntityClass)</comment>
   </data>
-  <data name="CategoriesNotFound" xml:space="preserve">
-    <value>Cannot find any categories</value>
+  <data name="EntityByIdNotFound" xml:space="preserve">
+    <value>Cannot find {0} with id: {1}</value>
+    <comment>format argument 0 - nameof(EntityClass), 1 - request id</comment>
   </data>
-  <data name="FactsNotFound" xml:space="preserve">
-    <value>Cannot find any fact</value>
-  </data>
-  <data name="HistoricalContextsNotFound" xml:space="preserve">
-    <value>Cannot find any historical contexts</value>
-  </data>
-  <data name="ImagesNotFound" xml:space="preserve">
-    <value>Cannot find any images</value>
-  </data>
-  <data name="NewsNotFound" xml:space="preserve">
-    <value>There are no news in the database</value>
-  </data>
-  <data name="PartnersNotFound" xml:space="preserve">
-    <value>Cannot find any partners</value>
-  </data>
-  <data name="RelatedTermsNotFound" xml:space="preserve">
-    <value>Cannot find any related terms</value>
-  </data>
-  <data name="StreetcodesNotFound" xml:space="preserve">
-    <value>No streetcodes exist now</value>
-  </data>
-  <data name="SubtitlesNotFound" xml:space="preserve">
-    <value>Cannot find any subtitles</value>
-  </data>
-  <data name="TagsNotFound" xml:space="preserve">
-    <value>Cannot find any tags</value>
-  </data>
-  <data name="TeamLinksNotFound" xml:space="preserve">
-    <value>Cannot find any team links</value>
-  </data>
-  <data name="TeamsNotFound" xml:space="preserve">
-    <value>Cannot find any team</value>
-  </data>
-  <data name="TermsNotFound" xml:space="preserve">
-    <value>Cannot find any terms</value>
-  </data>
-  <data name="TestsNotFound" xml:space="preserve">
-    <value>Cannot find any texts</value>
-  </data>
-  <data name="TimelineItemsNotFound" xml:space="preserve">
-    <value>Cannot find any timelineItem</value>
-  </data>
-  <data name="TransactionLinksNotFound" xml:space="preserve">
-    <value>Cannot find any transaction link</value>
-  </data>
-  <data name="VideosNotFound" xml:space="preserve">
-    <value>Cannot find any videos</value>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>Failed to update the {0} with id: {1}</value>
+    <comment>format argument 0 - nameof(EntityClass), 1 - request id</comment>
   </data>
 </root>
