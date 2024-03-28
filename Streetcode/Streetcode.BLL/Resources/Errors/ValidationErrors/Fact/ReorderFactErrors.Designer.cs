@@ -70,7 +70,7 @@ namespace Streetcode.BLL.Resources.Errors.ValidationErrors.Fact {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fact with Id={0} does not exist or has StreetcodeId different from {1}.
+        ///   Looks up a localized string similar to Fact with Id={0} does not exist or it has StreetcodeId &lt;&gt; {1}.
         /// </summary>
         public static string IncorrectFactIdInArray {
             get {

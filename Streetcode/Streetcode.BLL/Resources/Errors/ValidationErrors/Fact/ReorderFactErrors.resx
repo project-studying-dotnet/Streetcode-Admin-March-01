@@ -121,7 +121,7 @@
     <value>The incoming array of Ids is null or has no elements.</value>
   </data>
   <data name="IncorrectFactIdInArray" xml:space="preserve">
-    <value>Fact with Id={0} does not exist or has StreetcodeId different from {1}</value>
+    <value>Fact with Id={0} does not exist or it has StreetcodeId &lt;&gt; {1}</value>
     <comment>format:
 argument 0 - fact id
 argument 1 - streetcode id</comment>
