@@ -79,6 +79,15 @@ namespace Streetcode.BLL.Resources.Errors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find {0}s with {1}Id: {2}.
+        /// </summary>
+        public static string EntitiesByIdNotFound {
+            get {
+                return ResourceManager.GetString("EntitiesByIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find any {0}s.
         /// </summary>
         public static string EntitiesNotFound {

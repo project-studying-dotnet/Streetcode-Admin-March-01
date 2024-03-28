@@ -76,7 +76,9 @@ public sealed class ReorderFactHandler : IRequestHandler<ReorderFactCommand, Res
     private Result<ReorderFactResponseDto> CannotFindFactsWithStreetcodeId(ReorderFactRequestDto request)
     {
         var errorMsg = string.Format(
-            Resources.Errors.ValidationErrors.Fact.ReorderFactErrors.ThereAreNoFactsWithCorrespondingStreetcodeId,
+            Resources.Errors.ErrorMessages.EntitiesByIdNotFound,
+            nameof(Fact),
+            nameof(Streetcode),
             request.StreetcodeId);
         _logger.LogError(request, errorMsg);
         return Result.Fail(errorMsg);
