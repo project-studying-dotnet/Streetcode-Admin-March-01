@@ -107,7 +107,11 @@ public sealed class ReorderFactHandler : IRequestHandler<ReorderFactCommand, Res
 
     private Result<ReorderFactResponseDto> CannotUpdateFactsAfterReordering(ReorderFactRequestDto request)
     {
-        var errorMsg = string.Format(Resources.Errors.ValidationErrors.Fact.ReorderFactErrors.CannotUpdateNumberInFact);
+        var errorMsg = string.Format(
+            Resources.Errors.ErrorMessages.UpdateEntitiesFailed,
+            nameof(Fact),
+            nameof(Streetcode),
+            request.StreetcodeId);
         _logger.LogError(request, errorMsg);
         return Result.Fail(errorMsg);
     }

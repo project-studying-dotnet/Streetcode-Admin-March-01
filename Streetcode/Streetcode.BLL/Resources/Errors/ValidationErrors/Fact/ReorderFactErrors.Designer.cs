@@ -61,15 +61,6 @@ namespace Streetcode.BLL.Resources.Errors.ValidationErrors.Fact {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot update property Number in fact.
-        /// </summary>
-        public static string CannotUpdateNumberInFact {
-            get {
-                return ResourceManager.GetString("CannotUpdateNumberInFact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The incoming array of Ids is null or has no elements..
         /// </summary>
         public static string IncomingFactIdArrIsNullOrEmpty {
@@ -93,15 +84,6 @@ namespace Streetcode.BLL.Resources.Errors.ValidationErrors.Fact {
         public static string IncorrectIdsNumberInArray {
             get {
                 return ResourceManager.GetString("IncorrectIdsNumberInArray", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There are no facts with corresponding StreetcodeId = {0}.
-        /// </summary>
-        public static string ThereAreNoFactsWithCorrespondingStreetcodeId {
-            get {
-                return ResourceManager.GetString("ThereAreNoFactsWithCorrespondingStreetcodeId", resourceCulture);
             }
         }
     }

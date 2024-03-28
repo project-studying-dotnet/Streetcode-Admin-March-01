@@ -6,6 +6,7 @@ using Moq;
 using Streetcode.BLL.Dto.Streetcode.TextContent.Fact;
 using Streetcode.BLL.Interfaces.Logging;
 using Streetcode.BLL.MediatR.Streetcode.Fact.Reorder;
+using Streetcode.BLL.Resources.Errors;
 using Streetcode.DAL.Entities.Streetcode.TextContent;
 using Streetcode.DAL.Repositories.Interfaces.Base;
 using System;
@@ -69,7 +70,9 @@ public class ReorderFactHandlerTests
         var result = await handler.Handle(new ReorderFactCommand(new ReorderFactRequestDto(ids, FAILEDSTREETCODEID)), CancellationToken.None);
         var actualErrorMessage = result.Errors[0].Message;
         var expectedErrorMessage = string.Format(
-           ReorderFactErrors.ThereAreNoFactsWithCorrespondingStreetcodeId,
+           ErrorMessages.EntitiesByIdNotFound,
+           nameof(Fact),
+           nameof(Streetcode),
            FAILEDSTREETCODEID);
 
         // Assert
@@ -140,7 +143,11 @@ public class ReorderFactHandlerTests
         // Act
         var result = await handler.Handle(new ReorderFactCommand(new ReorderFactRequestDto(ids, STREETCODEID)), CancellationToken.None);
         var actualErrorMessage = result.Errors[0].Message;
-        var expectedErrorMessage = string.Format(ReorderFactErrors.CannotUpdateNumberInFact);
+        var expectedErrorMessage = string.Format(
+            ErrorMessages.UpdateEntitiesFailed,
+            nameof(Fact),
+            nameof(Streetcode),
+            STREETCODEID);
 
         // Assert
         result.IsFailed.Should().BeTrue();
